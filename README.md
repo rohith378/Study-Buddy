@@ -27,7 +27,7 @@
 ```bash
 cd backend
 npm install
-cp .env.example .env      # fill in your keys
+cp .env                   # fill in your keys
 npm run dev               # runs on http://localhost:5000
 ```
 
