@@ -7,6 +7,7 @@ const authRoutes      = require('./routes/auth');
 const notesRoutes     = require('./routes/notes');
 const qnaRoutes       = require('./routes/qna');
 const remindersRoutes = require('./routes/reminders');
+const assistantRoutes = require('./routes/assistant');
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use('/api/auth',      authRoutes);
 app.use('/api/notes',     notesRoutes);
 app.use('/api/qna',       qnaRoutes);
 app.use('/api/reminders', remindersRoutes);
+app.use('/api/assistant', assistantRoutes);
 
 app.get('/api/health', (_, res) => res.json({ status: 'ok' }));
 app.use((req, res, next) => { res.setTimeout(120000); next(); });

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Outlet, NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import AIAssistant from './AIAssistant'
 
 const navMain = [
   { to: '/', label: 'Dashboard', icon: GridIcon },
@@ -16,8 +17,8 @@ const navExam = [
   { to: '/exam-prep', label: 'Exam Prep', icon: ExamIcon, badge: 'New', badgeColor: 'bg-amber-50 text-amber-700' },
 ]
 const navMore = [
-  { to: '/search',    label: 'Search Topics',    icon: SearchIcon },
-  { to: '/reminders', label: 'Email Reminders',  icon: BellIcon },
+  { to: '/search',    label: 'Search Topics',   icon: SearchIcon },
+  { to: '/reminders', label: 'Email Reminders', icon: BellIcon },
 ]
 
 export default function Layout() {
@@ -38,7 +39,6 @@ export default function Layout() {
           <p className="text-xs text-gray-400 mt-0.5">AI learning assistant</p>
         </div>
       </div>
-
       <nav className="flex-1 px-2 py-3 overflow-auto space-y-0.5">
         <p className="text-[10px] uppercase tracking-widest text-gray-400 px-2 pb-1">Main</p>
         {navMain.map(n => <SideItem key={n.to} {...n} onClick={closeSidebar} />)}
@@ -49,12 +49,11 @@ export default function Layout() {
         <p className="text-[10px] uppercase tracking-widest text-gray-400 px-2 pt-3 pb-1">More</p>
         {navMore.map(n => <SideItem key={n.to} {...n} onClick={closeSidebar} />)}
       </nav>
-
       <div className="px-3 py-3 border-t border-gray-100 flex items-center gap-2">
         <div className="w-8 h-8 rounded-full bg-primary-50 flex items-center justify-center text-xs font-semibold text-primary-800 flex-shrink-0">{initials}</div>
         <div className="flex-1 min-w-0">
           <p className="text-sm font-medium truncate">{user?.name || 'Student'}</p>
-          <p className="text-xs text-gray-400">CS Final Year</p>
+          <p className="text-xs text-gray-400">student</p>
         </div>
         <button onClick={() => { logout(); navigate('/login') }} className="text-gray-300 hover:text-gray-500 transition-colors" title="Logout">
           <LogoutIcon />
@@ -101,6 +100,9 @@ export default function Layout() {
           <div className="page-enter"><Outlet /></div>
         </main>
       </div>
+
+      {/* AI Assistant — floating on every page */}
+      <AIAssistant />
     </div>
   )
 }
