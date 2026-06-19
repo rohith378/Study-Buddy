@@ -114,7 +114,7 @@ router.post('/send-test', auth, async (req, res) => {
     res.json({ message: ` email sent to ${toEmail}` })
   } catch (err) {
     console.error('Email error:', err.message)
-    res.status(500).json({ message: 'Failed to send email: ' + err.message })
+    res.status(500).json({ message: 'Failed to send email: '  })
   }
 });
 
